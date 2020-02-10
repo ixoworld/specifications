@@ -1,0 +1,23 @@
+Filters implemented in the ixo React Web App and React Native Mobile App MUST be specified in JSON-LD syntax.
+This will enable semantic linking across filter configurations.
+
+User story:
+As a Project Creator who works across multiple sectors, I want to be able to filter for the available Project Templates in each domain. Regardless of which Relayer Portal I use, I want to know that I am using the same filter categories (both in name and meaning).
+
+Filter categories SHOULD adhere to standard public schemas for filters.
+The ixo schema server will be hosted (in the first instance) by ixo.foundation. 
+This context will therefore be "@context":"https://schema.ixo.foundation/project"
+In future, the 'schema server' can use IPFS to achieve global persistence, content addressing and immutibility.
+
+A snippet of the JSON-LD for a single filter category for "SDG" and included goal of "Education" would look something like:
+
+{
+  "@context":https://schema.org
+  "@type":"Project"
+   @context": "https://schema.ixo.foundation/project",
+  "@type": "Category",
+  "SDG": {
+    "@type": "Goal",
+    "@id": "SDG4",
+    "name": "Education"
+  },
