@@ -1,30 +1,26 @@
 Bond Events are recorded by ixo protocol blockchains as core state records.
 These events are triggered by state changes in the `Bonds` module.
-Functionally, state changes are what drives the bond state machine. The diagram maps these states and transition events.
+Functionally, state changes are what drive the bond state machine. The diagram maps these states and transition events.
 
 https://www.lucidchart.com/invitations/accept/ecaccdec-bdb5-495e-87c3-2aa5fd3dd701
 
-|Type        | Attribute Key | Attribute Value             |
-|------------| --------------| ----------------------------|
-|Alert       | `BondAction`. | {"bondaction":"issue"}.     |
-|Alert | `BondAction`| {"bondaction":"completionclaim"}|
-|Alert | `BondAction`| {"bondaction":"settle"}|
-|Alert | `BondAction`| {"bondaction":"suspend"}|
-|Alert |`Alphaupdate`|{"bondalpha":"alpha"}|
-|Status | `BondState`|{"bondstate":"Setup"}|
-|Status | `BondState`|{"bondstate":"Launch"}|
-|Status | `BondState`|{"bondstate":"Active"}|
-|Status | `BondState`|{"bondstate":"Paused"}|
-|Status | `BondState`|{"bondstate":"Suspended"}|
-|Status | `BondState`|{"bondstate":"Closing"}|
-|Status | `BondState`|{"bondstate":"Settled"}|
-|Status | `BondState`|{"bondstate":"Archived"}|
-|Announcement |`Announce`|{"announce":"AnnouncementURI"}|
-|Dispute | `DisputeClaim`|{"disputeclaimID":"ClaimID"}|
-|Dispute | `DisputeStatus`|{"disputestatus":"ClaimID.Open"}|
-|Dispute | `DisputeStatus`|{"disputestatus":"ClaimID.Resolving"}|
-|Dispute | `DisputeStatus`|{"disputestatus":"ClaimID.Audit"}|
-|Dispute | `DisputeStatus`|{"disputestatus":"ClaimID.Resolved"}|
-|Dispute | `DisputeStatus`|{"disputestatus":"ClaimID.Closed"}|
+|Type          | Attribute Key     | Attribute Value             |
+|--------------| ------------------| ----------------------------|
+|bond_action   | bond_did          | {bondDid}                   |
+|bond_action   | action            | {action}                    |
+|alpha_update  | bond_did          | {bondDid}                   |
+|alpha_update  | alpha             | {alpha}                     |
+|status_update | bond_did          | {bondDid}                   |
+|status_update | status            | {status}                    |
+|announcement  | bond_did          | {bondDid}                   |
+|announcement  | announcement_uri  | {announcementUri}           |
+|dispute       | bond_did          | {bondDid}                   |
+|dispute       | claim_id          | {claimId}                   |
+|dispute       | status            | {status}                    |
+
+**Possible values:**
+- Bond actions (bond_action): issue, complete, settle, suspend
+- Bond statuses (status_update): setup, launch, active, paused, suspended, closing, settled, archived
+- Dispute statuses (dispute): open, resolving, audit, resolved, closed
 
 `AnnouncementURI` is typically the IPFS content address of an announcement message file serialised in JSON.
